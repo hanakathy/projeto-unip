@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using MySql.EntityFrameworkCore.Extensions;
 using ProjetoUnip.Data;
 using ProjetoUnip.Models;
@@ -20,11 +21,9 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddEntityFrameworkMySQL().AddDbContext<ProjetoUnipContext>(options =>
-            options.UseMySQL("server=localhost;port=3306;user=root;password=root;database=projetounip;"));
+        //options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
+        options.UseMySQL("server=localhost;port=3306;user=root;password=root;database=projetounip;"));
     }
-        
-    /*services.AddDbContext<>( options => options.UseMySQL(conexao));
-     GetConnectionString("DefaultConnection") */
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
