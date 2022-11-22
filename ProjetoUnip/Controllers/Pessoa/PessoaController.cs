@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace ProjetoUnip.Controllers.Pessoa
 {
-    //[Route("api/v1/[controller]")]
+    
     public class PessoaController : Controller, PessoaDAO
     {
         private readonly ProjetoUnipContext _context;
@@ -17,9 +17,6 @@ namespace ProjetoUnip.Controllers.Pessoa
             _context = context;
         }
 
-        //Criando Pessoa
-        /* [HttpPost]
-        [Route("pessoa")] */
         public bool inserir(Models.Pessoa pessoa)
         {
             _context.Add(pessoa);
@@ -28,9 +25,6 @@ namespace ProjetoUnip.Controllers.Pessoa
             return true;
         }
 
-        //Alterando
-        /* [HttpPut]
-        [Route("pessoa/{id}")] */
         public bool alterar(Models.Pessoa p)
         {
             _context.Pessoa.Update(p);
@@ -39,9 +33,6 @@ namespace ProjetoUnip.Controllers.Pessoa
             return false;
         }
 
-        //Pesquisar por CPF
-        /* [HttpGet]
-        [Route("pessoa/{cpf}")] */
         public Models.Pessoa consultar(long cpf)
         {
             var p = _context.Pessoa.Find(cpf);
@@ -49,9 +40,6 @@ namespace ProjetoUnip.Controllers.Pessoa
             return p;
         }
 
-        //Excluir Pessoa
-        /*[HttpDelete]
-        [Route("pessoa/{id}")] */
         public bool excluir(Models.Pessoa p)
         {
             _context.Pessoa.Remove(p);
